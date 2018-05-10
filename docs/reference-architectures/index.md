@@ -170,12 +170,12 @@ Our reference architectures are arranged by scenario, with related architectures
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="./sap/images/sap.svg" height="140px" />
+                            <img src="./sap/images/sap-netweaver.svg" height="140px" />
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>SAP NetWeaver and SAP HANA</h3>
-                        <p>Deploy and run SAP NetWeaver and SAP HANA in a high availability environment on Azure.</p>
+                        <h3>SAP</h3>
+                        <p>Deploy and run SAP in a high availability environment on Azure.</p>
                     </div>
                 </div>
             </div>
