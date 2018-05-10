@@ -170,7 +170,7 @@ Our reference architectures are arranged by scenario, with related architectures
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="./sap/images/sap-netweaver.svg" height="140px" />
+                            <img src="./sap/images/sap.svg" height="140px" />
                         </div>
                     </div>
                     <div class="cardText">
