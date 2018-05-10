@@ -80,7 +80,7 @@
     href: sap/index.md
     items:
     - name: SAP NetWeaver for AnyDB
-      href: /sap/sap-netweaver.md
+      href: sap/sap-netweaver.md
 
   - name: SharePoint Server 2016
     href: sharepoint/index.md

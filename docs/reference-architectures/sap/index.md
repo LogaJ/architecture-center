@@ -15,7 +15,7 @@ ms.date: 05/10/2018
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="./images/n-tier-sql-server.svg" height="140px" />
+                            <img src="./images/sap-netweaver.svg" height="140px" />
                         </div>
                     </div>
                     <div class="cardText">

@@ -5,7 +5,7 @@ author: lbrader
 ms.date: 05/10/2018
 ---
 
-## Run SAP NetWeaver for AnyDB on Azure
+# Run SAP NetWeaver for AnyDB on Azure
 
 This reference architecture shows a set of proven practices for running SAP NetWeaver in a Windows environment on Azure with high availability. The database is AnyDB, the SAP term for any supported DBMS besides SAP HANA. 
 
@@ -90,7 +90,7 @@ SAP Web Dispatcher handles load balancing of HTTP(S) traffic to a pool of SAP ap
 
 For traffic from SAP GUI clients connecting a SAP server via DIAG protocol and Remote Function Calls (RFC), the Central Services message server balances the load through SAP application server [logon groups](https://wiki.scn.sap.com/wiki/display/SI/ABAP+Logon+Group+based+Load+Balancing), so no additional load balancer is needed.
 
-## Performance considerations
+## Performance and scalability considerations
 
 SAP application servers are in constant communicattion with the database servers. For performance-critical applications running on any database platform, including SAP HANA, consider enabling [Write Accelerator](/virtual-machines/linux/how-to-enable-write-accelerator) to improve log write latency. To optimize network communication between VMs, enable [Accelerated Networking](https://docs.microsoft.com/en-us/azure/virtual-network/create-vm-accelerated-networking-cli). Note that not all VM series support Accelerated Network.
 
@@ -100,8 +100,6 @@ To achieve high IOPS and disk bandwidth throughput, the common practices in stor
 - Enabling the read cache on storage content that changes infrequently enhances the speed of data retrieval.
 
 For SAP on SQL, the blog post [Top 10 Key Considerations for Deploying SAP Applications on Azure](https://blogs.msdn.microsoft.com/saponsqlserver/2015/05/25/top-10-key-considerations-for-deploying-sap-applications-on-azure/) has recommendations optimizing Azure storage for SAP workloads on SQL Server.
-
-## Scalability considerations
 
 At the SAP application layer, Azure offers a wide range of virtual machine sizes for scaling up. For an inclusive list, see [SAP note 1928533](https://launchpad.support.sap.com/#/notes/1928533). (SAP Service Marketplace account required for access.) SAP application servers can scale up/down or scale out by adding more instances.
 
@@ -129,7 +127,7 @@ For disaster recovery (DR), you must be able to fail over to a secondary region.
 
 **Central Services**. Central Services does not persist any business data. You can deploy a VM in the secondary region to run the Central Services role. The only content from the primary Central Services node to synchronize is the /sapmnt share content. In addition, any configuration changes or kernel updates on the primary Central Services servers must be copied to the VM in the secondary region. To synchronize the two servers, you can use Azure Site Recovery to replicate the cluster nodes or simply schedule a job to copy /sapmnt to the disaster recovery region. For details, download the whitepaper [SAP NetWeaver: Building a Hyper-V & Microsoft Azure–based Disaster Recovery Solution](http://download.microsoft.com/download/9/5/6/956FEDC3-702D-4EFB-A7D3-2DB7505566B6/SAP%20NetWeaver%20-%20Building%20an%20Azure%20based%20Disaster%20Recovery%20Solution%20V1_5%20.docx), and refer to section 4.3, SAP SPOF layer (ASCS).
 
-**Database tier**. Use the database's own integrated replication technology for DR. In the case of SQL Server, for example, we recommend using Always On Availability Groups to replicate transactions asynchronously with manual failover. Asynchronous replication avoids an impact to the performance of interactive workloads at the primary site. Manual failover offers the opportunity for a person to evaluate the DR impact and decide if operating from the DR site is justified. For more information, see [Multi-region N-tier application for high availability](../n-tier/multi-region-sql-server).
+**Database tier**. Use the database's own integrated replication technology for DR. In the case of SQL Server, for example, we recommend using Always On Availability Groups to replicate transactions asynchronously with manual failover. Asynchronous replication avoids an impact to the performance of interactive workloads at the primary site. Manual failover offers the opportunity for a person to evaluate the DR impact and decide if operating from the DR site is justified. For more information, see [Multi-region N-tier application for high availability](../n-tier/multi-region-sql-server.md).
 
 To use Azure Site Recovery to automatically build out a fully replicated production site of your original, you must run customized deployment scripts. For more information, see [Add Azure Automation runbooks to recovery plans](/azure/site-recovery/site-recovery-runbook-automation). Site Recovery first deploys the VMs in availability sets, then runs scripts to add resources such as load balancers.
 
